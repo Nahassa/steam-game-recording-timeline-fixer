@@ -13,14 +13,15 @@ This script automatically scans and fixes **all** timeline files in:
 
 ### instructions
 - locate your Steam Recordings folder (e.g., `C:\Program Files (x86)\Steam\userdata\<userid>\760\remote\<appid>\screenshots` or wherever you've configured Steam to save recordings)
-- save fix.bat in the **Steam Recordings** folder (the parent folder containing `timelines` and `clips` subfolders)
-- run fix.bat
+- save timelines_fix.bat in the **Steam Recordings** folder (the parent folder containing `timelines` and `clips` subfolders)
+- run timelines_fix.bat
 - the script will automatically:
   - scan for all JSON files in timelines and clips folders
   - validate each file's JSON structure
   - convert `entries` from object to sorted array (only if needed)
   - skip files that are already valid
   - show detailed status for each file processed
+  - create a timestamped log file (timelines_fix_dd-MM-yyyy_HH-mm-ss.log)
 - restart steam and check if the timeline entries recordings are ok
 
 ### what the script does
@@ -29,6 +30,7 @@ This script automatically scans and fixes **all** timeline files in:
 - **Fixes** only the files that need fixing
 - **Skips** files that are already correct
 - **Reports** summary of fixed/skipped/error counts
+- **Logs** all output to a timestamped log file for review
 
 ### corrupt example
 ```json

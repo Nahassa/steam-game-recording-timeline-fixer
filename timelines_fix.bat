@@ -6,7 +6,7 @@ for /f "tokens=1-6 delims=/: " %%a in ("%date% %time%") do (
     set "logdate=%%c-%%b-%%a"
     set "logtime=%%d-%%e-%%f"
 )
-set "logfile=timelines_fx_%logdate%_%logtime%.log"
+set "logfile=timelines_fix_%logdate%_%logtime%.log"
 
 REM Start logging
 echo Steam Game Recording Timeline Fixer > "%logfile%"
