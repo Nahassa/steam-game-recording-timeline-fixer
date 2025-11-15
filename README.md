@@ -27,10 +27,13 @@ This script automatically scans and fixes **all** timeline files in:
 ### what the script does
 - **Validates** all JSON files before attempting fixes
 - **Detects** if `entries` is an object (invalid) or array (valid)
-- **Fixes** only the files that need fixing
+- **Backs up** original files to `.bak` before fixing (e.g., `timeline.json` → `timeline.json.bak`)
+- **Creates** new fixed files with the original filename
 - **Skips** files that are already correct
 - **Reports** summary of fixed/skipped/error counts
 - **Logs** all output to a timestamped log file for review
+
+**Note:** Original corrupted files are safely preserved as `.bak` files, allowing you to recover them if needed.
 
 ### corrupt example
 ```json

@@ -61,9 +61,14 @@ powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "        $msg = '  Status: INVALID - entries is an object, converting to array...'; " ^
   "        Write-Host $msg -ForegroundColor Yellow; " ^
   "        Add-Content -Path $logFile -Value $msg; " ^
+  "        $backupPath = $file.FullName + '.bak'; " ^
+  "        Rename-Item -Path $file.FullName -NewName $backupPath -Force -ErrorAction Stop; " ^
+  "        $msg = \"  Backup created: $backupPath\"; " ^
+  "        Write-Host $msg -ForegroundColor Gray; " ^
+  "        Add-Content -Path $logFile -Value $msg; " ^
   "        $json.entries = ($json.entries.PSObject.Properties | Sort-Object Name | ForEach-Object { $_.Value }); " ^
   "        $json | ConvertTo-Json -Depth 10 -Compress:$false | Set-Content $file.FullName -ErrorAction Stop; " ^
-  "        $msg = '  Result: FIXED'; " ^
+  "        $msg = '  Result: FIXED (original backed up to .bak)'; " ^
   "        Write-Host $msg -ForegroundColor Green; " ^
   "        Add-Content -Path $logFile -Value $msg; " ^
   "        $fixedCount++; " ^
@@ -109,7 +114,10 @@ powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "Write-Host $msg; " ^
   "Add-Content -Path $logFile -Value $msg; " ^
   "if ($fixedCount -gt 0) { " ^
-  "  $msg = \"`nRemember to restart Steam for changes to take effect!\"; " ^
+  "  $msg = \"`nOriginal files backed up with .bak extension\"; " ^
+  "  Write-Host $msg -ForegroundColor Cyan; " ^
+  "  Add-Content -Path $logFile -Value $msg; " ^
+  "  $msg = \"Remember to restart Steam for changes to take effect!\"; " ^
   "  Write-Host $msg -ForegroundColor Yellow; " ^
   "  Add-Content -Path $logFile -Value $msg; " ^
   "}"
