@@ -12,8 +12,8 @@ This script automatically scans and fixes **all** timeline files in:
 - `clips\*\timelines\` folders (all clip recordings, across all games)
 
 ### instructions
-- open folder `C:\Program Files (x86)\Steam\userdata\timelines`
-- save fix.bat here
+- locate your Steam Recordings folder (e.g., `C:\Program Files (x86)\Steam\userdata\<userid>\760\remote\<appid>\screenshots` or wherever you've configured Steam to save recordings)
+- save fix.bat in the **Steam Recordings** folder (the parent folder containing `timelines` and `clips` subfolders)
 - run fix.bat
 - the script will automatically:
   - scan for all JSON files in timelines and clips folders
